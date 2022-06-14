@@ -1,8 +1,6 @@
 package Tests;
 
-import Pages.HomePage;
-import Pages.RadioButtonPage;
-import Pages.TextBoxPage;
+import Pages.*;
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +20,10 @@ public class BaseTest {
     private HomePage homePage;
     private TextBoxPage textBoxPage;
     private RadioButtonPage radioButtonPage;
+    private ButtonsPage buttonsPage;
+    private LinksPage linksPage;
+    private AutomationPracticeFormPage automationPracticeFormPage;
+    private LoginPage loginPage;
 
     @BeforeClass
     public void setUp(){
@@ -34,7 +36,12 @@ public class BaseTest {
 
         this.textBoxPage = new TextBoxPage(driver, driverWait);
         this.radioButtonPage = new RadioButtonPage(driver, driverWait);
+        this.buttonsPage = new ButtonsPage(driver, driverWait);
+        this.linksPage = new LinksPage(driver, driverWait);
+        this.automationPracticeFormPage = new AutomationPracticeFormPage(driver, driverWait);
+        this.loginPage = new LoginPage(driver, driverWait);
         driver.navigate().to("https://demoqa.com/");
+        driver.manage().window().maximize();
     }
 
 //    @AfterClass

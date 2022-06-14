@@ -3,8 +3,11 @@ package Pages;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Data
@@ -24,7 +27,7 @@ public class TextBoxPage extends BasePage{
     public TextBoxPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
-
+    JavascriptExecutor js = (JavascriptExecutor) getDriver();
     public WebElement getFullName(){
         return getDriver().findElement(fullName);
     }
@@ -68,6 +71,7 @@ public class TextBoxPage extends BasePage{
     }
 
     public void clickSubmitButton(){
+        js.executeScript("arguments[0].scrollIntoView();", getSubmitButton());
         getSubmitButton().click();
     }
     public void textBoxUrl(){
