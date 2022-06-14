@@ -1,15 +1,16 @@
 package Tests;
 
+import Pages.TextBoxPage;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Data
-@NoArgsConstructor
+@Data @NoArgsConstructor
 
 public class Tests extends BaseTest{
-
     @Test(priority = 1)
     public void verifySubmittingFormWithValidDataReturnsEnteredData(){
         getTextBoxPage().fillTextForm("Adam Smith", "adamsmith@gmail.com", "83 Main Street", "83 Main Street");
