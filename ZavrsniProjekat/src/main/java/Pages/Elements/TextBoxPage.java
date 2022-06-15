@@ -86,4 +86,10 @@ public class TextBoxPage extends BasePage {
         clickSubmitButton();
     }
 
+    public void enterInvalidEmail(String email){
+        //textBoxUrl();
+        enterEmail(email);
+        clickSubmitButton();
+    }
+
 }

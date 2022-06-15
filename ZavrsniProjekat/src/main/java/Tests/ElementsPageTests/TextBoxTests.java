@@ -18,4 +18,10 @@ public class TextBoxTests extends BaseTest {
         Assert.assertTrue(getTextBoxPage().getEnteredCurrentAddress().getText().contains("83 Main Street"));
         Assert.assertTrue(getTextBoxPage().getEnteredPermanentAddress().getText().contains("83 Main Street"));
     }
+    @Test(priority = 2)
+    public void verifyInvalidEmail(){
+        getTextBoxPage().getEmail().clear();
+        getTextBoxPage().enterInvalidEmail("adamsmith");
+        Assert.assertTrue(getTextBoxPage().getEmail().getAttribute("class").contains("field-error"));
+    }
 }

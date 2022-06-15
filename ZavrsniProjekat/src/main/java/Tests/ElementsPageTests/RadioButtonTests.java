@@ -10,11 +10,13 @@ import org.testng.annotations.Test;
 @NoArgsConstructor
 public class RadioButtonTests extends BaseTest {
     @Test(priority = 1)
-    public void verifyIfClicksOnRadioButtonsReturnValidMessages(){
+    public void verifyClicksOnRadioButtons(){
         getRadioButtonPage().radioButtonUrl();
         getRadioButtonPage().clickYesRadioButton();
         Assert.assertTrue(getRadioButtonPage().getYesMessage().getText().contains("Yes"));
+        Assert.assertFalse(getRadioButtonPage().getImpressiveRadioButton().isSelected());
         getRadioButtonPage().clickImpressiveRadioButton();
         Assert.assertTrue(getRadioButtonPage().getImpressiveMessage().getText().contains("Impressive"));
+        Assert.assertFalse(getRadioButtonPage().getYesRadioButton().isSelected());
     }
 }

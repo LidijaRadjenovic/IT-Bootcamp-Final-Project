@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
     private By userName = By.id("userName");
     private By password = By.id("password");
     private By captcha = By.xpath("//*[@id=\"recaptcha-anchor\"]/div[4]");
-    private By registerButton = By.id("register");
+    private By registerButton = By.xpath("//*[@id=\"register\"]");
     JavascriptExecutor js = (JavascriptExecutor) getDriver();
     Actions actions = new Actions(getDriver());
 
@@ -68,8 +68,8 @@ public class LoginPage extends BasePage {
 
     public void clickRegisterButton(){
 //        //*[@id="google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0__container__"]
-//        getDriverWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("/html/body/iframe")));
-//        getDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"register\"]"))).click();
+        //getDriverWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("/html/body/iframe")));
+        //getDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"register\"]"))).click();
         getRegisterButton().click();
     }
 
@@ -85,15 +85,14 @@ public class LoginPage extends BasePage {
         js.executeScript("arguments[0].scrollIntoView();", getPassword());
         enterPassword(password);
         clickCaptcha();
-        Thread.sleep(5000);
-        getDriver().switchTo().parentFrame();
-        //actions.moveToElement(getRegisterButton());
+        Thread.sleep(10000);
+        getDriver().switchTo().defaultContent();
+        getDriverWait().until(ExpectedConditions.elementToBeClickable(getRegisterButton()));
         clickRegisterButton();
 
     }
 
-    public boolean isAlertMessageDisplayed() throws InterruptedException {
-        Thread.sleep(5000);
+    public boolean isAlertMessageDisplayed(){
         try {
             getDriver().switchTo().alert();
             return true;
@@ -102,8 +101,7 @@ public class LoginPage extends BasePage {
         }
     }
 
-    public void alertMessage() throws InterruptedException {
-        Thread.sleep(5000);
+    public void alertMessage(){
         getDriver().switchTo().alert().accept();
     }
 }

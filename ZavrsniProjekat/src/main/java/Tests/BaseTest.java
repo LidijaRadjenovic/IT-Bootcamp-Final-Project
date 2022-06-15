@@ -2,10 +2,7 @@ package Tests;
 
 import Pages.AlertsFrameWindows.AlertsPage;
 import Pages.BookStoreApplication.LoginPage;
-import Pages.Elements.ButtonsPage;
-import Pages.Elements.LinksPage;
-import Pages.Elements.RadioButtonPage;
-import Pages.Elements.TextBoxPage;
+import Pages.Elements.*;
 import Pages.Forms.PracticeFormPage;
 import Pages.HomePage.HomePage;
 import lombok.Data;
@@ -30,15 +27,15 @@ public class BaseTest {
     private PracticeFormPage automationPracticeFormPage;
     private LoginPage loginPage;
     private AlertsPage alertsPage;
-
+    private CheckBoxPage checkBoxPage;
     @BeforeClass
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         driver = new ChromeDriver();
 
-        driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         this.textBoxPage = new TextBoxPage(driver, driverWait);
         this.radioButtonPage = new RadioButtonPage(driver, driverWait);
@@ -47,8 +44,9 @@ public class BaseTest {
         this.automationPracticeFormPage = new PracticeFormPage(driver, driverWait);
         this.loginPage = new LoginPage(driver, driverWait);
         this.alertsPage = new AlertsPage(driver, driverWait);
+        this.checkBoxPage = new CheckBoxPage(driver, driverWait);
         driver.navigate().to("https://demoqa.com/");
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
 //    @AfterClass
