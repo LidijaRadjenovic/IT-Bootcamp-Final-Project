@@ -1,12 +1,17 @@
 package Tests;
 
-import Pages.*;
+import Pages.AlertsFrameWindows.AlertsPage;
+import Pages.BookStoreApplication.LoginPage;
+import Pages.Elements.ButtonsPage;
+import Pages.Elements.LinksPage;
+import Pages.Elements.RadioButtonPage;
+import Pages.Elements.TextBoxPage;
+import Pages.Forms.PracticeFormPage;
+import Pages.HomePage.HomePage;
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.time.Duration;
@@ -22,8 +27,9 @@ public class BaseTest {
     private RadioButtonPage radioButtonPage;
     private ButtonsPage buttonsPage;
     private LinksPage linksPage;
-    private AutomationPracticeFormPage automationPracticeFormPage;
+    private PracticeFormPage automationPracticeFormPage;
     private LoginPage loginPage;
+    private AlertsPage alertsPage;
 
     @BeforeClass
     public void setUp(){
@@ -38,10 +44,11 @@ public class BaseTest {
         this.radioButtonPage = new RadioButtonPage(driver, driverWait);
         this.buttonsPage = new ButtonsPage(driver, driverWait);
         this.linksPage = new LinksPage(driver, driverWait);
-        this.automationPracticeFormPage = new AutomationPracticeFormPage(driver, driverWait);
+        this.automationPracticeFormPage = new PracticeFormPage(driver, driverWait);
         this.loginPage = new LoginPage(driver, driverWait);
+        this.alertsPage = new AlertsPage(driver, driverWait);
         driver.navigate().to("https://demoqa.com/");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
 //    @AfterClass
